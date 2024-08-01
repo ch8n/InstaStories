@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import dev.ch8n.instastories.R
+import dev.ch8n.instastories.utils.noRippleClick
 
 @Composable
 fun CrossIcon(
@@ -23,11 +24,7 @@ fun CrossIcon(
         painter = painterResource(id = R.drawable.ic_close_24),
         contentDescription = null,
         modifier = modifier
-            .clickable(
-                indication = null,
-                interactionSource = remember { MutableInteractionSource() },
-                onClick = onClick
-            ),
+            .noRippleClick(onClick),
         tint = Color.Gray
     )
 }

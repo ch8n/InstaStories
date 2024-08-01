@@ -48,6 +48,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import dev.ch8n.instastories.R
 import dev.ch8n.instastories.data.remote.config.RemoteServiceProvider
@@ -65,9 +66,10 @@ import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 
-@Preview
 @Composable
-private fun StoriesPreviewScreenPreview() {
+fun StoriesPreviewScreen(
+    navController: NavController
+) {
     val repository = remember {
         StoryRepository(RemoteServiceProvider.storiesService)
     }
@@ -76,19 +78,19 @@ private fun StoriesPreviewScreenPreview() {
     }
     val viewModel = remember { StoryPreviewViewModelViewModel(fetchUseCase) }
     val screenState by viewModel.screenState.collectAsState()
-    StoriesPreviewScreen(screenState)
+    StoriesPreviewContent(screenState, onBackClicked = {})
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun StoriesPreviewScreen(
-    storiesHomeState: StoriesPreviewHomeState
+fun StoriesPreviewContent(
+    storiesHomeState: StoriesPreviewHomeState,
+    onBackClicked: () -> Unit
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
     ) {
         if (storiesHomeState.stories.isNotEmpty()) {
-
 
             val pagerState = rememberPagerState(
                 initialPage = 0,
@@ -122,9 +124,7 @@ fun StoriesPreviewScreen(
                     .size(56.dp)
                     .padding(16.dp)
                     .align(Alignment.TopEnd),
-                onClick = {
-
-                },
+                onClick = onBackClicked,
             )
         }
     }
