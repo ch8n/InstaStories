@@ -2,12 +2,14 @@ package dev.ch8n.instastories.ui.features.storiesHome
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -60,13 +62,17 @@ fun StoriesScreen(
         LazyRow(
             modifier = Modifier.fillMaxWidth()
         ) {
-            items(storiesHomeState.stories) { story ->
+            itemsIndexed(storiesHomeState.stories) { index, story ->
+                if (index == 0) Spacer(modifier = Modifier.size(16.dp))
+
                 CircularUserIcon(
                     userName = story.userName,
                     modifier = Modifier
                         .padding(4.dp)
                         .size(64.dp)
                 )
+
+                if (index == storiesHomeState.stories.lastIndex) Spacer(modifier = Modifier.size(16.dp))
             }
         }
     }
