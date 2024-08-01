@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -17,8 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import dev.ch8n.instastories.data.remote.config.RemoteServiceProvider
 import dev.ch8n.instastories.data.repositories.StoryRepository
 import dev.ch8n.instastories.domain.models.Story
@@ -47,6 +50,13 @@ fun StoriesScreen(
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
+        Text(
+            text = "InstaStories - Chetan Gupta",
+            fontSize = 24.sp,
+            modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 12.dp, bottom = 8.dp),
+            fontStyle = FontStyle.Italic
+        )
+
         LazyRow(
             modifier = Modifier.fillMaxWidth()
         ) {
