@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.fastJoinToString
+import dev.ch8n.instastories.utils.randomColor
 
 @Composable
 fun CircularUserIcon(
@@ -30,11 +31,7 @@ fun CircularUserIcon(
             .fastJoinToString("")
     }
 
-    val randomColor = remember(userName) {
-        listOf(Color.Cyan, Color.Magenta, Color.Yellow, Color.LightGray)
-            .shuffled()
-            .first()
-    }
+    val randomColor = remember(userName) { randomColor() }
 
     Box(
         modifier = modifier

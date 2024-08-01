@@ -47,7 +47,6 @@ fun StoriesScreen(
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-
         LazyRow(
             modifier = Modifier.fillMaxWidth()
         ) {
