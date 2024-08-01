@@ -8,9 +8,19 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -36,6 +46,7 @@ import coil.compose.AsyncImage
 import dev.ch8n.instastories.data.remote.config.RemoteServiceProvider
 import dev.ch8n.instastories.data.repositories.StoryRepository
 import dev.ch8n.instastories.domain.usecases.GetStoriesRemoteUseCase
+import dev.ch8n.instastories.ui.features.storiesPreview.component.AutoScrollPagerIndicator
 import dev.ch8n.instastories.ui.features.storiesPreview.component.AutoScrollingPager
 import dev.ch8n.instastories.utils.randomColor
 import kotlinx.coroutines.Dispatchers
@@ -43,6 +54,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 
 @Preview
@@ -69,10 +81,14 @@ fun StoriesPreviewScreen(
     ) {
         if (storiesHomeState.stories.isNotEmpty()) {
 
+            val pagerState = rememberPagerState(
+                initialPage = 0,
+                pageCount = { storiesHomeState.stories.size }
+            )
 
             AutoScrollingPager(
                 modifier = Modifier.fillMaxSize(),
-                pageCount = { storiesHomeState.stories.size }
+                pagerState = pagerState
             ) { pageNumber ->
 
                 val selectedStory = storiesHomeState.stories.get(pageNumber)
@@ -84,6 +100,13 @@ fun StoriesPreviewScreen(
                     contentScale = ContentScale.Crop
                 )
             }
+
+            AutoScrollPagerIndicator(
+                modifier = Modifier.fillMaxWidth(),
+                pagerState = pagerState,
+                indicatorWidth = 45.dp,
+                indicatorCount = storiesHomeState.stories.size
+            )
         }
     }
 }
