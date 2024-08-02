@@ -12,11 +12,11 @@ the next story.
 
 # Non-Functional Requirements
 - [x] Performance - stories should load smoothly without any delay from the backend or observable delay in loading of images.
-- [] Tests - Write Integration tests for this feature.
+- [x] Tests - Write Integration tests for this feature.
 - [x] Caching - Write a service to cache the API response.
 
 # Technical Requirements
 - [x] Language: Kotlin
 - [x] Framework: Native Android
-- [] Testing Framework: Feel free to use any testing framework of your choice.
-- [] CI/CD Pipelines: use any service of your choice to run tests on every push.
+- [x] Testing Framework: Feel free to use any testing framework of your choice.
+- [x] CI/CD Pipelines: use any service of your choice to run tests on every push.
