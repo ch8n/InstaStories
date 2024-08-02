@@ -81,6 +81,10 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    testImplementation("com.google.truth:truth:1.1.3")
+    testImplementation("io.mockk:mockk:1.13.3")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
