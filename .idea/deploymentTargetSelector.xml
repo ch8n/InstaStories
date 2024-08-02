@@ -5,13 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MainActivity">
+      <SelectionState runConfigName="storiesHomeScreen_on_error_message_should_be_visible()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="StoriesScreenPreview">
+      <SelectionState runConfigName="StoriesScreenTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="StoriesPreviewScreenPreview">
+      <SelectionState runConfigName="storiesHomeScreen_on_data_empty_no_circular_icon()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="storiesHomeScreen_on_3_data_shows_3_circular_icon()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="storiesHomeScreen_on_data_circular_icon_shows_correct_initals()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

@@ -20,18 +20,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import dev.ch8n.instastories.data.remote.injector.RemoteServiceProvider
-import dev.ch8n.instastories.data.repositories.StoryRepository
 import dev.ch8n.instastories.domain.models.Story
-import dev.ch8n.instastories.domain.usecases.GetStoriesRemoteUseCase
 import dev.ch8n.instastories.ui.features.Screen
 import dev.ch8n.instastories.ui.features.storiesHome.components.CircularUserIcon
+import dev.ch8n.instastories.utils.TestTags
 import dev.ch8n.instastories.utils.noRippleClick
 
 
@@ -61,6 +60,7 @@ fun StoriesHomeContent(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .testTag(TestTags.StoriesScreen.ERROR_PLACEHOLDER)
                     .height(24.dp)
                     .background(Color.Red)
             ) {
@@ -69,7 +69,9 @@ fun StoriesHomeContent(
                     fontWeight = FontWeight.Bold,
                     fontSize = 12.sp,
                     color = Color.White,
-                    modifier = Modifier.align(Alignment.Center),
+                    modifier = Modifier
+                        .testTag(TestTags.StoriesScreen.ERROR_PLACEHOLDER_TEXT)
+                        .align(Alignment.Center),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -93,6 +95,7 @@ fun StoriesHomeContent(
                     CircularUserIcon(
                         userName = "",
                         modifier = Modifier
+                            .testTag(TestTags.StoriesScreen.CIRCULAR_IMAGE_LOADER)
                             .padding(4.dp)
                             .size(64.dp),
                         isLoading = true
@@ -113,6 +116,7 @@ fun StoriesHomeContent(
                     CircularUserIcon(
                         userName = story.userName,
                         modifier = Modifier
+                            .testTag(TestTags.StoriesScreen.CIRCULAR_IMAGE)
                             .padding(4.dp)
                             .size(64.dp)
                             .noRippleClick {
