@@ -25,29 +25,39 @@ import dev.ch8n.instastories.utils.randomColor
 fun CircularUserIcon(
     userName: String,
     modifier: Modifier = Modifier,
-    isBorderVisible: Boolean,
+    isLoading: Boolean = false,
 ) {
     val userInitials = remember(userName) {
         userName.split(" ")
-            .map { it.first().uppercase() }
+            .map { it.firstOrNull()?.uppercase() ?: "" }
             .fastJoinToString("")
     }
 
     val randomColor = remember(userName) { randomColor() }
+    val backgroundModifier = remember(isLoading) {
+        if (isLoading) {
+            Modifier
+                .padding(4.dp)
+                .background(Color.Gray.copy(alpha = 0.8f), CircleShape)
+        } else {
+            Modifier
+                .border(
+                    width = 2.dp,
+                    brush = Brush.sweepGradient(
+                        listOf(Color.Yellow, Color.Red, Color.Magenta),
+                        center = Offset.Zero
+                    ),
+                    shape = CircleShape
+                )
+                .padding(4.dp)
+                .background(randomColor, CircleShape)
+        }
+    }
 
     Box(
         modifier = modifier
             .clip(CircleShape)
-            .border(
-                width = 2.dp,
-                brush = Brush.sweepGradient(
-                    listOf(Color.Yellow, Color.Red, Color.Magenta),
-                    center = Offset.Zero
-                ),
-                shape = CircleShape
-            )
-            .padding(4.dp)
-            .background(randomColor, CircleShape)
+            .then(backgroundModifier)
     ) {
         Text(
             text = userInitials,
