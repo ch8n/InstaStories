@@ -26,6 +26,8 @@ import dev.ch8n.instastories.ui.features.Screen
 import dev.ch8n.instastories.ui.features.storiesPreview.component.AutoScrollPagerIndicator
 import dev.ch8n.instastories.ui.features.storiesPreview.component.AutoScrollingPager
 import dev.ch8n.instastories.ui.features.storiesPreview.component.CrossIcon
+import dev.ch8n.instastories.utils.provideViewModel
+import dev.ch8n.instastories.utils.viewModelFactory
 
 
 @Composable
@@ -35,8 +37,8 @@ fun StoriesPreviewScreen(
 ) {
     val arguments = backStackEntry.toRoute<Screen.StoriesPreviewScreen>()
     val storyId = arguments.storyId
-    val viewModel = remember { StoryPreviewViewModelViewModel() }
-    val screenState by viewModel.screenState.collectAsState()
+    val storyPreviewViewModel = provideViewModel(factory = viewModelFactory { StoryPreviewViewModel() })
+    val screenState by storyPreviewViewModel.screenState.collectAsState()
     StoriesPreviewContent(
         screenState,
         onBackClicked = {

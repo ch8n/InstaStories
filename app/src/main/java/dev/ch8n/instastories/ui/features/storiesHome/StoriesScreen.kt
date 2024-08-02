@@ -32,12 +32,14 @@ import dev.ch8n.instastories.ui.features.Screen
 import dev.ch8n.instastories.ui.features.storiesHome.components.CircularUserIcon
 import dev.ch8n.instastories.utils.TestTags
 import dev.ch8n.instastories.utils.noRippleClick
+import dev.ch8n.instastories.utils.provideViewModel
+import dev.ch8n.instastories.utils.viewModelFactory
 
 
 @Composable
 fun StoriesHomeScreen(navController: NavController) {
-    val viewModel = remember { StoryViewModel() }
-    val screenState by viewModel.screenState.collectAsState()
+    val storyViewModel = provideViewModel(factory = viewModelFactory { StoryViewModel() })
+    val screenState by storyViewModel.screenState.collectAsState()
     StoriesHomeContent(
         storiesHomeState = screenState,
         navigateToPreview = { story ->

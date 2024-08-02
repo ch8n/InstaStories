@@ -26,7 +26,7 @@ data class StoriesPreviewHomeState(
     }
 }
 
-class StoryPreviewViewModelViewModel(
+class StoryPreviewViewModel(
     private val getStoriesRemoteUseCase: GetStoriesRemoteUseCase = UseCasesProvider.getStoriesRemoteUseCase
 ) : ViewModel() {
 
