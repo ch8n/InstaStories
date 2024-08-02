@@ -2,6 +2,7 @@ package dev.ch8n.instastories.ui.features.storiesHome
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dev.ch8n.instastories.domain.injector.UseCasesProvider
 import dev.ch8n.instastories.domain.models.Story
 import dev.ch8n.instastories.domain.usecases.GetStoriesRemoteUseCase
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +26,7 @@ data class StoriesHomeState(
 }
 
 class StoryViewModel(
-    private val getStoriesRemoteUseCase: GetStoriesRemoteUseCase
+    private val getStoriesRemoteUseCase: GetStoriesRemoteUseCase = UseCasesProvider.getStoriesRemoteUseCase
 ) : ViewModel() {
 
     private val _screenState = MutableStateFlow(StoriesHomeState.Empty)

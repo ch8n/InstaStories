@@ -1,4 +1,4 @@
-package dev.ch8n.instastories.data.remote.config
+package dev.ch8n.instastories.data.remote.injector
 
 import okhttp3.OkHttpClient
 

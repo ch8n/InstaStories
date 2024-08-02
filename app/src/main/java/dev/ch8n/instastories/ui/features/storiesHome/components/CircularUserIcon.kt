@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
@@ -23,7 +24,8 @@ import dev.ch8n.instastories.utils.randomColor
 @Composable
 fun CircularUserIcon(
     userName: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isBorderVisible: Boolean,
 ) {
     val userInitials = remember(userName) {
         userName.split(" ")
@@ -31,12 +33,9 @@ fun CircularUserIcon(
             .fastJoinToString("")
     }
 
-    val randomColor = remember(userName) { randomColor() }
-
-    Box(
-        modifier = modifier
-            .clip(CircleShape)
-            .border(
+    val borderModifier = remember(isBorderVisible) {
+        if (isBorderVisible){
+            Modifier.border(
                 width = 2.dp,
                 brush = Brush.sweepGradient(
                     listOf(Color.Yellow, Color.Red, Color.Magenta),
@@ -44,6 +43,17 @@ fun CircularUserIcon(
                 ),
                 shape = CircleShape
             )
+        } else {
+            Modifier.alpha(0.8f)
+        }
+    }
+
+    val randomColor = remember(userName) { randomColor() }
+
+    Box(
+        modifier = modifier
+            .clip(CircleShape)
+            .then(borderModifier)
             .padding(4.dp)
             .background(randomColor, CircleShape)
     ) {

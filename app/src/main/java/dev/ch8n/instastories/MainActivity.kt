@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dev.ch8n.instastories.data.local.injector.LocalServiceProvider
 import dev.ch8n.instastories.ui.features.AppNavigation
 import dev.ch8n.instastories.ui.theme.InstaStoriesTheme
 
@@ -29,6 +30,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        LocalServiceProvider.initAppContext(applicationContext)
         setContent {
             InstaStoriesTheme {
                 Surface(

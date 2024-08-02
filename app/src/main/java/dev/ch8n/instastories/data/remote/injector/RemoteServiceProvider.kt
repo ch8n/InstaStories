@@ -1,4 +1,4 @@
-package dev.ch8n.instastories.data.remote.config
+package dev.ch8n.instastories.data.remote.injector
 
 import dev.ch8n.instastories.data.remote.StoriesService
 import retrofit2.Retrofit

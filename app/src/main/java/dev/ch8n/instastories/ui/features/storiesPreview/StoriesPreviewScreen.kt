@@ -23,9 +23,6 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.toRoute
 import coil.compose.AsyncImage
-import dev.ch8n.instastories.data.remote.config.RemoteServiceProvider
-import dev.ch8n.instastories.data.repositories.StoryRepository
-import dev.ch8n.instastories.domain.usecases.GetStoriesRemoteUseCase
 import dev.ch8n.instastories.ui.features.Screen
 import dev.ch8n.instastories.ui.features.storiesPreview.component.AutoScrollPagerIndicator
 import dev.ch8n.instastories.ui.features.storiesPreview.component.AutoScrollingPager
@@ -39,13 +36,7 @@ fun StoriesPreviewScreen(
 ) {
     val arguments = backStackEntry.toRoute<Screen.StoriesPreviewScreen>()
     val storyId = arguments.storyId
-    val repository = remember {
-        StoryRepository(RemoteServiceProvider.storiesService)
-    }
-    val fetchUseCase = remember {
-        GetStoriesRemoteUseCase(repository)
-    }
-    val viewModel = remember { StoryPreviewViewModelViewModel(fetchUseCase) }
+    val viewModel = remember { StoryPreviewViewModelViewModel() }
     val screenState by viewModel.screenState.collectAsState()
     StoriesPreviewContent(
         screenState,
@@ -56,7 +47,6 @@ fun StoriesPreviewScreen(
     )
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun StoriesPreviewContent(
     storiesHomeState: StoriesPreviewHomeState,

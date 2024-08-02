@@ -18,7 +18,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import dev.ch8n.instastories.data.remote.config.RemoteServiceProvider
+import dev.ch8n.instastories.data.remote.injector.RemoteServiceProvider
 import dev.ch8n.instastories.data.repositories.StoryRepository
 import dev.ch8n.instastories.domain.models.Story
 import dev.ch8n.instastories.domain.usecases.GetStoriesRemoteUseCase
@@ -29,13 +29,7 @@ import dev.ch8n.instastories.utils.noRippleClick
 
 @Composable
 fun StoriesHomeScreen(navController: NavController) {
-    val repository = remember {
-        StoryRepository(RemoteServiceProvider.storiesService)
-    }
-    val fetchUseCase = remember {
-        GetStoriesRemoteUseCase(repository)
-    }
-    val viewModel = remember { StoryViewModel(fetchUseCase) }
+    val viewModel = remember { StoryViewModel() }
     val screenState by viewModel.screenState.collectAsState()
     StoriesHomeContent(
         storiesHomeState = screenState,
@@ -73,7 +67,8 @@ fun StoriesHomeContent(
                         .size(64.dp)
                         .noRippleClick {
                             navigateToPreview.invoke(story)
-                        }
+                        },
+                    isBorderVisible = index % 2 == 0
                 )
 
                 if (index == storiesHomeState.stories.lastIndex) Spacer(modifier = Modifier.size(16.dp))
