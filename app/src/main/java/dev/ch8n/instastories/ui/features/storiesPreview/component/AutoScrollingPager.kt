@@ -87,7 +87,7 @@ fun AutoScrollingPager(
             state = pagerState,
             modifier = Modifier.fillMaxSize(),
             userScrollEnabled = false,
-            beyondBoundsPageCount = 2,
+            beyondViewportPageCount = 2,
         ) { pageNumber ->
             val configuration = LocalConfiguration.current
             val widthPx = with(LocalDensity.current) { configuration.screenWidthDp.dp.toPx() }

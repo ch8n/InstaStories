@@ -1,6 +1,5 @@
 package dev.ch8n.instastories.ui.features.storiesHome
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -41,8 +40,7 @@ fun StoriesHomeScreen(navController: NavController) {
     StoriesHomeContent(
         storiesHomeState = screenState,
         navigateToPreview = { story ->
-            //TODO passing argument
-            navController.navigate(Screen.StoriesPreview(story.id).route)
+            navController.navigate(Screen.StoriesPreviewScreen(story.id))
         }
     )
 }

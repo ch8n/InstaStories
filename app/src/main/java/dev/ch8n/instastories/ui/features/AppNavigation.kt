@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dev.ch8n.instastories.ui.features.storiesHome.StoriesHomeScreen
 import dev.ch8n.instastories.ui.features.storiesPreview.StoriesPreviewScreen
+import kotlinx.serialization.Serializable
 
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier) {
@@ -14,20 +15,31 @@ fun AppNavigation(modifier: Modifier = Modifier) {
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = Screen.StoriesHome.route
+        startDestination = Screen.StoriesHomeScreen
     ) {
-        composable(Screen.StoriesHome.route) {
+
+        composable<Screen.StoriesHomeScreen> {
             StoriesHomeScreen(navController = navController)
         }
 
-        composable(Screen.StoriesPreview("").route) {
-            StoriesPreviewScreen(navController = navController)
+        composable<Screen.StoriesPreviewScreen> { backStackEntry ->
+            StoriesPreviewScreen(
+                navController = navController,
+                backStackEntry = backStackEntry,
+            )
         }
     }
 }
 
 
-sealed class Screen(val route: String) {
-    data object StoriesHome : Screen(route = "stories_home")
-    data class StoriesPreview(val storyId: String) : Screen(route = "stories_preview")
+@Serializable
+sealed class Screen {
+
+    @Serializable
+    data object StoriesHomeScreen : Screen()
+
+    @Serializable
+    data class StoriesPreviewScreen(
+        val storyId: String
+    ) : Screen()
 }
