@@ -54,6 +54,14 @@
 ## Architecture
 ![App arch](./arch.png)
 
+The `instastories` application follows a structured architecture to ensure modularity and maintainability:
+
+- **Data Layer**: Manages remote data access via `StoriesService` and repositories like `StoryRepository`, with dependency injection provided by `OkHttpClientProvider` and `RemoteServiceProvider`.
+- **Domain Layer**: Contains core business logic, including use cases such as `GetStoriesRemoteUseCase`, and domain models like `Story`. Dependency injection is handled by `RepositoryProvider` and `UseCasesProvider`.
+- **Server**: Includes `EmbeddedServer` for backend operations.
+- **UI Layer**: Composed of feature-specific screens and view models, such as `StoriesScreen` and `StoryViewModel`, with UI components and themes.
+- **Utils**: Provides extension functions and test tags for enhanced functionality.
+
 ## Dependency Injection
 Application is small level therefore isnt require complex solutions such
 as koin or Dagger/hilt, 
