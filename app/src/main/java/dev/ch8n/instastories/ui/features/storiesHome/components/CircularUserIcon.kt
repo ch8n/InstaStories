@@ -33,9 +33,12 @@ fun CircularUserIcon(
             .fastJoinToString("")
     }
 
-    val borderModifier = remember(isBorderVisible) {
-        if (isBorderVisible){
-            Modifier.border(
+    val randomColor = remember(userName) { randomColor() }
+
+    Box(
+        modifier = modifier
+            .clip(CircleShape)
+            .border(
                 width = 2.dp,
                 brush = Brush.sweepGradient(
                     listOf(Color.Yellow, Color.Red, Color.Magenta),
@@ -43,17 +46,6 @@ fun CircularUserIcon(
                 ),
                 shape = CircleShape
             )
-        } else {
-            Modifier.alpha(0.8f)
-        }
-    }
-
-    val randomColor = remember(userName) { randomColor() }
-
-    Box(
-        modifier = modifier
-            .clip(CircleShape)
-            .then(borderModifier)
             .padding(4.dp)
             .background(randomColor, CircleShape)
     ) {

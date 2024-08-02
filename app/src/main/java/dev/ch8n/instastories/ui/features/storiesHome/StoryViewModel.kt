@@ -26,7 +26,7 @@ data class StoriesHomeState(
 }
 
 class StoryViewModel(
-    private val getStoriesRemoteUseCase: GetStoriesRemoteUseCase = UseCasesProvider.getStoriesRemoteUseCase
+    private val getStoriesRemoteUseCase: GetStoriesRemoteUseCase = UseCasesProvider.getStoriesRemoteUseCase,
 ) : ViewModel() {
 
     private val _screenState = MutableStateFlow(StoriesHomeState.Empty)
@@ -46,9 +46,7 @@ class StoryViewModel(
             withLoading {
                 val stories = getStoriesRemoteUseCase.invoke()
                 _screenState.update {
-                    it.copy(
-                        stories = stories
-                    )
+                    it.copy(stories = stories)
                 }
             }
         }
