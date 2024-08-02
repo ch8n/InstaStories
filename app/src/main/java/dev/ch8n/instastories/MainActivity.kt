@@ -13,6 +13,7 @@ import coil.ImageLoaderFactory
 import coil.disk.DiskCache
 import coil.memory.MemoryCache
 import coil.util.DebugLogger
+import dev.ch8n.instastories.server.EmbeddedServer
 import dev.ch8n.instastories.ui.features.AppNavigation
 import dev.ch8n.instastories.ui.injector.AppInjector
 import dev.ch8n.instastories.ui.theme.InstaStoriesTheme
@@ -21,6 +22,7 @@ class MainActivity : ComponentActivity(), ImageLoaderFactory {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppInjector.setAppContext(applicationContext)
+        EmbeddedServer.startServer()
         enableEdgeToEdge()
         setContent {
             InstaStoriesTheme {
@@ -34,6 +36,7 @@ class MainActivity : ComponentActivity(), ImageLoaderFactory {
     }
 
     override fun onDestroy() {
+        EmbeddedServer.stopServer()
         super.onDestroy()
         AppInjector.release()
     }

@@ -4,7 +4,7 @@ import dev.ch8n.instastories.domain.models.Story
 import retrofit2.http.GET
 
 interface StoriesService {
-    @GET("stories")
+    @GET("chetan/api/stories")
     suspend fun getStories(): List<Story>
 }
 

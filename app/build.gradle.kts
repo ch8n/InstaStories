@@ -45,7 +45,10 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "META-INF/*"
+            // Due to https://github.com/Kotlin/kotlinx.coroutines/issues/2023
+            excludes += "META-INF/licenses/*"
+            excludes += "**/attach_hotspot_windows.dll"
         }
     }
 }
@@ -69,6 +72,11 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+
+    val ktor_version = "1.6.4"
+    implementation("io.ktor:ktor-server-netty:$ktor_version")
+    implementation("io.ktor:ktor-server-core:$ktor_version")
+    implementation("io.ktor:ktor-gson:$ktor_version")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

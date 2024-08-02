@@ -2,7 +2,7 @@ package dev.ch8n.instastories
 
 import dev.ch8n.instastories.domain.models.Story
 
-object DummyData {
+object FakeStories {
     fun getStories(): List<Story> {
         return listOf(
             Story(
