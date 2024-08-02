@@ -15,12 +15,14 @@ import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dev.ch8n.instastories.ui.features.AppNavigation
 import dev.ch8n.instastories.ui.theme.InstaStoriesTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,12 +31,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             InstaStoriesTheme {
-                Box(
-                    modifier = Modifier
-                        .safeContentPadding()
-                        .border(2.dp, Color.Magenta),
+                Surface(
+                    modifier = Modifier.safeContentPadding()
                 ) {
-                    Text(text = "hello world!")
+                    AppNavigation(modifier = Modifier.fillMaxSize())
                 }
             }
         }

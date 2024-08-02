@@ -6,11 +6,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dev.ch8n.instastories.ui.features.storiesHome.StoriesHomeScreen
+import dev.ch8n.instastories.ui.features.storiesPreview.StoriesPreviewScreen
 
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     NavHost(
+        modifier = modifier,
         navController = navController,
         startDestination = Screen.StoriesHome.route
     ) {
@@ -18,8 +20,8 @@ fun AppNavigation(modifier: Modifier = Modifier) {
             StoriesHomeScreen(navController = navController)
         }
 
-        composable(Screen.StoriesHome.route) {
-
+        composable(Screen.StoriesPreview("").route) {
+            StoriesPreviewScreen(navController = navController)
         }
     }
 }

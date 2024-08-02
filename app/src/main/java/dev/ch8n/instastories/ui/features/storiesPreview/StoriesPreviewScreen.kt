@@ -78,7 +78,9 @@ fun StoriesPreviewScreen(
     }
     val viewModel = remember { StoryPreviewViewModelViewModel(fetchUseCase) }
     val screenState by viewModel.screenState.collectAsState()
-    StoriesPreviewContent(screenState, onBackClicked = {})
+    StoriesPreviewContent(screenState, onBackClicked = {
+        navController.popBackStack()
+    })
 }
 
 @OptIn(ExperimentalFoundationApi::class)
