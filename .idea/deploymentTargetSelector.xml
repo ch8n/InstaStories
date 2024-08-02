@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="storiesHomeScreen_on_error_message_should_be_visible()">
+      <SelectionState runConfigName="storiesPreviewHomeScreen_autoScroll_after5Sec()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="StoriesScreenTest">
+      <SelectionState runConfigName="testAutoScrollingPager_changesPageAfter5Seconds()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="storiesHomeScreen_on_data_empty_no_circular_icon()">
+      <SelectionState runConfigName="testAutoScrollingPager_doesNotAutoScrollWhilePressing()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="storiesHomeScreen_on_3_data_shows_3_circular_icon()">
+      <SelectionState runConfigName="testAutoScrollingPager_onPressLeft_PageNext()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="storiesHomeScreen_on_data_circular_icon_shows_correct_initals()">
+      <SelectionState runConfigName="testAutoScrollingPager_onPressRight_PageNext()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

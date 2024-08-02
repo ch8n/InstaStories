@@ -71,7 +71,7 @@ fun AutoScrollingPager(
                 return@DisposableEffect onDispose { }
             }
 
-            scrollJob = scope.launch(Dispatchers.IO) {
+            scrollJob = scope.launch {
                 while (true) {
                     delay(autoScrollDelay)
                     pagerState.animateScrollToPage(pagerState.currentPage + 1)

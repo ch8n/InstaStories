@@ -8,4 +8,8 @@ object TestTags {
         const val CIRCULAR_IMAGE_LOADER = "CIRCULAR_IMAGE_LOADER"
     }
 
+    object StoriesPreviewScreen {
+        const val STORY_PAGER = "STORY_PAGER"
+        const val STORY_IMAGE = "STORY_IMAGE"
+    }
 }

@@ -1,6 +1,5 @@
 package dev.ch8n.instastories.ui.features.storiesPreview
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -79,9 +78,9 @@ fun StoriesPreviewContent(
 
                 AsyncImage(
                     model = selectedStory.imageUrl,
-                    contentDescription = null,
+                    contentDescription = selectedStory.id,
                     modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Crop,
                 )
             }
 
