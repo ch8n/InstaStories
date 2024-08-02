@@ -27,7 +27,7 @@ jobs:
           java-version: '17'
 
       - name: Download Android SDK
-        uses: android-actions/setup-android@v2
+        uses: android-actions/setup-android@v3
         with:
           api-levels: ${{ matrix.api-level }}
           target: default
