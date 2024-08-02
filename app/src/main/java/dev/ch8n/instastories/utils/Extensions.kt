@@ -24,3 +24,21 @@ fun Modifier.noRippleClick(
         onClick = onClick
     )
 )
+
+sealed class ResultOf<out T> {
+    data class Success<T>(val value: T) : ResultOf<T>()
+    data class Error(
+        val message: String?,
+        val throwable: Throwable?
+    ) : ResultOf<Nothing>()
+
+    companion object {
+        suspend fun <T> build(block: suspend () -> T): ResultOf<T> {
+            return try {
+                ResultOf.Success(block.invoke())
+            } catch (e: Exception) {
+                ResultOf.Error(e.message, e.cause)
+            }
+        }
+    }
+}

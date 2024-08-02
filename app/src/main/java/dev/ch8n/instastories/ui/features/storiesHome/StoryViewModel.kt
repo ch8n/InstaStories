@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dev.ch8n.instastories.domain.injector.UseCasesProvider
 import dev.ch8n.instastories.domain.models.Story
 import dev.ch8n.instastories.domain.usecases.GetStoriesRemoteUseCase
+import dev.ch8n.instastories.utils.ResultOf
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -44,9 +45,19 @@ class StoryViewModel(
     init {
         viewModelScope.launch(Dispatchers.IO) {
             withLoading {
-                val stories = getStoriesRemoteUseCase.invoke()
-                _screenState.update {
-                    it.copy(stories = stories)
+                val storiesResult = getStoriesRemoteUseCase.invoke()
+                when (storiesResult) {
+                    is ResultOf.Error -> {
+                        _screenState.update {
+                            it.copy(error = storiesResult.message ?: "Something went wrong!")
+                        }
+                    }
+
+                    is ResultOf.Success -> {
+                        _screenState.update {
+                            it.copy(stories = storiesResult.value)
+                        }
+                    }
                 }
             }
         }
