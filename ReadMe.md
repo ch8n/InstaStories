@@ -23,10 +23,65 @@ the next story.
 
 # Documentation
 
+## Directory structure
+```
+.
+└── instastories
+    ├── Data.kt
+    ├── MainActivity.kt
+    ├── data
+    │   ├── remote
+    │   │   ├── StoriesService.kt
+    │   │   └── injector
+    │   │       ├── OkHttpClientProvider.kt
+    │   │       └── RemoteServiceProvider.kt
+    │   └── repositories
+    │       └── StoryRepository.kt
+    ├── domain
+    │   ├── injector
+    │   │   ├── RepositoryProvider.kt
+    │   │   └── UseCasesProvider.kt
+    │   ├── models
+    │   │   └── Story.kt
+    │   └── usecases
+    │       └── GetStoriesRemoteUseCase.kt
+    ├── server
+    │   └── EmbeddedServer.kt
+    ├── ui
+    │   ├── features
+    │   │   ├── AppNavigation.kt
+    │   │   ├── storiesHome
+    │   │   │   ├── StoriesScreen.kt
+    │   │   │   ├── StoryViewModel.kt
+    │   │   │   └── components
+    │   │   │       └── CircularUserIcon.kt
+    │   │   └── storiesPreview
+    │   │       ├── StoriesPreviewScreen.kt
+    │   │       ├── StoryPreviewViewModel.kt
+    │   │       └── component
+    │   │           ├── AutoScrollIndicator.kt
+    │   │           ├── AutoScrollingPager.kt
+    │   │           └── CrossIcon.kt
+    │   ├── injector
+    │   │   └── AppInjector.kt
+    │   └── theme
+    │       ├── Color.kt
+    │       ├── Theme.kt
+    │       └── Type.kt
+    └── utils
+        ├── Extensions.kt
+        └── TestTags.kt
+
+```
+
 ## Architecture
 ![App arch](./arch.png)
 
 ## Dependency Injection
+Application is small level therefore isnt require complex solutions such
+as koin or Dagger/hilt, 
+
+Implemented manual DI I explain more about it [here](https://proandroiddev.com/hold-on-before-you-dagger-or-hilt-try-this-simple-di-f674c83ebeec)
 
 
 ## UI features
