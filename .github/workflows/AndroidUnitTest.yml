@@ -1,0 +1,42 @@
+name: Android Unit Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: '7.6'
+
+      - name: Build project
+        run: ./gradlew build
+
+      - name: Run unit tests
+        run: ./gradlew test
+
+      - name: Upload unit test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: unit-test-results
+          path: app/build/test-results/testDebugUnitTest/
