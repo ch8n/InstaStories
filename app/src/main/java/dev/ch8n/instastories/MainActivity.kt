@@ -14,11 +14,13 @@ import coil.disk.DiskCache
 import coil.memory.MemoryCache
 import coil.util.DebugLogger
 import dev.ch8n.instastories.ui.features.AppNavigation
+import dev.ch8n.instastories.ui.injector.AppInjector
 import dev.ch8n.instastories.ui.theme.InstaStoriesTheme
 
 class MainActivity : ComponentActivity(), ImageLoaderFactory {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppInjector.setAppContext(applicationContext)
         enableEdgeToEdge()
         setContent {
             InstaStoriesTheme {
@@ -29,6 +31,11 @@ class MainActivity : ComponentActivity(), ImageLoaderFactory {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AppInjector.release()
     }
 
     override fun newImageLoader(): ImageLoader {

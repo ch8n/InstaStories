@@ -11,7 +11,7 @@ object RemoteServiceProvider {
     private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(OkHttpClientProvider.client)
+            .client(OkHttpClientProvider.httpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
