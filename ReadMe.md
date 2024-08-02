@@ -63,7 +63,7 @@ Implemented manual DI I explain more about it [here](https://proandroiddev.com/h
 
 ## UI features
 
-# Functional Requirements
+### Functional Requirements
 Implement the following features:
 - [x] A list of stories should be visible in a smaller view in a horizontally scrollable list.
 - [x] The data for stories should be served by a backend API.
@@ -75,12 +75,12 @@ Implement the following features:
   the next story.
 - [x] Use animations or transitions for smoother story transitions and UI interactions.
 
-# Non-Functional Requirements
+### Non-Functional Requirements
 - [x] Performance - stories should load smoothly without any delay from the backend or observable delay in loading of images.
 - [x] Tests - Write Integration tests for this feature.
 - [x] Caching - Write a service to cache the API response.
 
-# Technical Requirements
+### Technical Requirements
 - [x] Language: Kotlin
 - [x] Framework: Native Android
 - [x] Testing Framework: Feel free to use any testing framework of your choice.
