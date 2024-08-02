@@ -1,7 +1,9 @@
 package dev.ch8n.instastories.ui.features.storiesPreview
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,6 +15,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
@@ -91,20 +95,34 @@ fun StoriesPreviewContent(
                 )
             }
 
-            AutoScrollPagerIndicator(
-                modifier = Modifier.fillMaxWidth(),
-                pagerState = pagerState,
-                indicatorWidth = 45.dp,
-                indicatorCount = storiesHomeState.stories.size
-            )
-
-            CrossIcon(
+            Column(
                 modifier = Modifier
-                    .size(56.dp)
-                    .padding(16.dp)
-                    .align(Alignment.TopEnd),
-                onClick = onBackClicked,
-            )
+                    .fillMaxSize()
+                    .background(
+                        brush = Brush.verticalGradient(
+                            listOf(
+                                Color.Black.copy(alpha = 0.8f),
+                                Color.Transparent,
+                                Color.Transparent,
+                            )
+                        )
+                    )
+            ) {
+                AutoScrollPagerIndicator(
+                    modifier = Modifier.fillMaxWidth(),
+                    pagerState = pagerState,
+                    indicatorWidth = 45.dp,
+                    indicatorCount = storiesHomeState.stories.size
+                )
+
+                CrossIcon(
+                    modifier = Modifier
+                        .size(42.dp)
+                        .padding(8.dp)
+                        .align(Alignment.End),
+                    onClick = onBackClicked,
+                )
+            }
         }
     }
 }
