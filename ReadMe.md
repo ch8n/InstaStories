@@ -20,3 +20,14 @@ the next story.
 - [x] Framework: Native Android
 - [x] Testing Framework: Feel free to use any testing framework of your choice.
 - [x] CI/CD Pipelines: use any service of your choice to run tests on every push.
+
+# Documentation
+
+## Architecture
+![App arch](./arch.png)
+
+## Dependency Injection
+
+
+## UI features
+
