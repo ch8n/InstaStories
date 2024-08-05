@@ -1,5 +1,7 @@
 # Documentation
 
+### Get apk from [here](./app-demo.apk)
+
 ## Directory structure
 ```
 .
