@@ -68,6 +68,12 @@ as koin or Dagger/hilt,
 
 Implemented manual DI I explain more about it [here](https://proandroiddev.com/hold-on-before-you-dagger-or-hilt-try-this-simple-di-f674c83ebeec)
 
+## Server 
+
+In this application, I have embedded a Ktor server within the app itself. It automatically starts in `MainActivity`'s `onCreate` method and stops in `onDestroy`. To test it, simply install the application and visit [http://localhost:8080/chetan/api/stories](http://localhost:8080/chetan/api/stories) from your mobile chrome browser. 
+
+You can learn more about Ktor [here](https://ktor.io/docs/server-create-a-new-project.html).
+
 
 ## UI features
 
