@@ -1,16 +1,17 @@
 package dev.ch8n.instastories.server
 
 import dev.ch8n.instastories.FakeStories
-import io.ktor.application.*
-import io.ktor.features.*
-import io.ktor.gson.*
-import io.ktor.routing.*
-import io.ktor.http.*
-import io.ktor.response.*
+import io.ktor.serialization.gson.gson
+import io.ktor.server.application.Application
+import io.ktor.server.application.call
+import io.ktor.server.application.install
 import io.ktor.server.engine.embeddedServer
-import io.ktor.server.engine.stop
 import io.ktor.server.netty.Netty
 import io.ktor.server.netty.NettyApplicationEngine
+import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.server.response.respond
+import io.ktor.server.routing.get
+import io.ktor.server.routing.routing
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

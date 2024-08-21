@@ -73,10 +73,12 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
 
-    val ktor_version = "1.6.4"
+    val ktor_version = "2.3.12"
     implementation("io.ktor:ktor-server-netty:$ktor_version")
     implementation("io.ktor:ktor-server-core:$ktor_version")
-    implementation("io.ktor:ktor-gson:$ktor_version")
+    implementation("io.ktor:ktor-serialization-gson:$ktor_version")
+    implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
+
 
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
